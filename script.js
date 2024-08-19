@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const novoP2 = document.getElementById("novo-p2").value;
         const novaImagemP1 = document.getElementById("nova-imagem-p1").files[0];
         const novaImagemP2 = document.getElementById("nova-imagem-p2").files[0];
-        modal.classList.add("escondido");
-        
+
         if (novaImagemP1) {
             const leitor = new FileReader();
             leitor.onload = function (e) {
@@ -29,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             leitor.readAsDataURL(novaImagemP1);
         }
+
         if (novaImagemP2) {
             const reader = new FileReader();
             reader.onload = function (e) {
@@ -36,19 +36,26 @@ document.addEventListener("DOMContentLoaded", function () {
             };
             reader.readAsDataURL(novaImagemP2);
         }
+
         nome.textContent = novoNome;
         data.textContent = `${dia}/${mes}/${ano}`;
         descricao.textContent = novaDescricao;
         personagemUm.textContent = novoP1;
         personagemDois.textContent = novoP2;
+        modal.classList.add("escondido");
     }
+
+    
+
     botaoModal.addEventListener("click", () => {
         modal.classList.remove("escondido");
     })
+
     window.addEventListener("click", (event) => {
         if (event.target == modal) {
             modal.classList.add("escondido");
         }
     })
+
     botaoEnviar.addEventListener("submit", form);
 });
